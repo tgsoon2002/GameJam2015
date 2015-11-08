@@ -1,0 +1,35 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-10184
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=1 type=0 insize=4390 outsize=249 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4390 outsize=252 kw= pd= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=4394 outsize=2104 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_NO_LINEAR_COLORSPACE ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4394 outsize=738 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=4395 outsize=271 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4395 outsize=738 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=4399 outsize=371 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4399 outsize=661 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=4400 outsize=381 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4400 outsize=661 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=819 outsize=131 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=819 outsize=316 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=934 outsize=131 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=934 outsize=307 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1298 outsize=291 kw= pd= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=1298 outsize=494 kw= pd= ok=1

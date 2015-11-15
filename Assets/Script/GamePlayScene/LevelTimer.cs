@@ -86,24 +86,29 @@ public class LevelTimer : MonoBehaviour
 			else {
 				Time.timeScale = 1.0f;
 			}
+
+		}
+		if (isPausing) {
+			volumeSlider.value += Input.GetAxis ("Horizontal")*0.01f;
 		}
 	}
 
     void FixedUpdate()
     {
-        if(countDown)
+		if(timer <= 0.0f)
+		{
+			timer = 0.0f;
+			countDown = false;
+			GameOver(1);
+		}
+		if(countDown )
         {
             timer -= Time.fixedDeltaTime;
             minutes = Mathf.Floor(timer / 60);
 			seconds = Mathf.Floor(timer % 60);
 			timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);	
         }
-        if(timer <= 0.0f)
-        {
-			timer = 0.0f;
-			countDown = false;
-			GameOver(1);
-		}
+      
 	}
 
     #endregion
@@ -127,6 +132,10 @@ public class LevelTimer : MonoBehaviour
 
 		//string sqlQuery = "UPDATE NewScore SET winLose = " + val + " , CowCounter = " + GameManager.instance.GMNumberOfCow + ", TimeLeft = " +timer;
 		//ExecuteUpdateQuerry(sqlQuery);
+		GameCurrentData.ldScript.statID = val;
+		GameCurrentData.ldScript.cow = GameManager.instance.GMNumberOfCow;
+		GameCurrentData.ldScript.timeLeft = timer;
+		GameCurrentData.ldScript.Save();
 		Application.LoadLevel (2);
 	}
 

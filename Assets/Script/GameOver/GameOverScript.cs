@@ -35,14 +35,29 @@ public class GameOverScript : MonoBehaviour {
 
 	void Update(){
 		if (Input.GetButtonDown ("Submit")) {
-			Application.LoadLevel (1);
+			PlayAgain();
 		}
 	}
 	#endregion
 
+	#region Public Method
+	public void LoadFromData(){
+		GameCurrentData.ldScript.Load();
+		statusID = GameCurrentData.ldScript.statID;
+		timeLeft = GameCurrentData.ldScript.timeLeft;
+		cowNumber = GameCurrentData.ldScript.cow;
+	
+	}
+	#endregion
+
+	#region Private Method
+	public void PlayAgain(){
+		Application.LoadLevel (1);
+	}
+	#endregion
 
 	void PopulateText(){
-		RetriveNewValue();
+		LoadFromData();
 		if (statusID == 0) {
 			winLoseCondition = "YOU GOT OWNED";
 		}

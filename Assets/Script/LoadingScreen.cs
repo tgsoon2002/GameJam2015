@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EventManager : MonoBehaviour {
+public class LoadingScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
+public class FCowAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -45,14 +45,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\GameCurrentData.cs" />
      <Compile Include="Assets\Script\GameOver\GameOverScript.cs" />
      <Compile Include="Assets\Script\GamePlayScene\BarMovement2.cs" />
      <Compile Include="Assets\Script\GamePlayScene\CameraController.cs" />
-     <Compile Include="Assets\Script\GamePlayScene\CameraMovement.cs" />
      <Compile Include="Assets\Script\GamePlayScene\CinematicScript.cs" />
      <Compile Include="Assets\Script\GamePlayScene\CowAI.cs" />
      <Compile Include="Assets\Script\GamePlayScene\CowAbduction.cs" />
-     <Compile Include="Assets\Script\GamePlayScene\EventManager.cs" />
+     <Compile Include="Assets\Script\GamePlayScene\FCowAI.cs" />
      <Compile Include="Assets\Script\GamePlayScene\FarmerAI.cs" />
      <Compile Include="Assets\Script\GamePlayScene\FarmerNick.cs" />
      <Compile Include="Assets\Script\GamePlayScene\FarmerSleepingInHouse.cs" />
@@ -64,6 +64,7 @@
      <Compile Include="Assets\Script\GamePlayScene\LevelTimer.cs" />
      <Compile Include="Assets\Script\GamePlayScene\MovingUFO.cs" />
      <Compile Include="Assets\Script\GamePlayScene\gotTheCowScript.cs" />
+     <Compile Include="Assets\Script\LoadingScreen.cs" />
      <Compile Include="Assets\Script\MenuScene\canvasManager.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />

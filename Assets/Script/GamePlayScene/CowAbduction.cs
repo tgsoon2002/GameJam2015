@@ -91,7 +91,6 @@ public class CowAbduction : MonoBehaviour {
 		}
 		if (collision.gameObject.CompareTag ("UFOBottom") && !abducted) {
 			BeingAbducted();
-			Debug.Log("Abducted");
 		}
 	}
 	// detect when ufo get off the cow position.
@@ -109,9 +108,13 @@ public class CowAbduction : MonoBehaviour {
 	void OnTriggerStay(Collider collision)
 	{
 		if (collision.gameObject.CompareTag ("Player")) {
-			if (collision.GetComponent<MovingUFO>().UFOIsBeaming && lifting) {
-				BeingBeam();
-
+			if (collision.GetComponent<MovingUFO>().UFOIsBeaming ){
+				if( lifting) {
+					BeingBeam();
+				}
+				else if (true) {
+					ai.TriggerMove();
+				}
 			}
 		}
 	}

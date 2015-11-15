@@ -103,7 +103,7 @@ public class GuardDog : MonoBehaviour
 	
 	#region Collision method
 	void OnCollisionEnter(Collision hayStack){
-		if (hayStack.gameObject.name == "HayStack") {
+		if (hayStack.gameObject.CompareTag ("HayStack") ) {
 			hayStack.gameObject.GetComponent<HayStackScript>().HitObeject();
 			DogGetStunned();
 		}

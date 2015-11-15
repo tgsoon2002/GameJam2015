@@ -9,9 +9,17 @@ public class CameraController : MonoBehaviour
 	private Vector3 originPosition;
 	private Vector3 tempPosition;
 	private Transform ufoTransform;
+
+	private bool controlable  = true;
 	#endregion
 
+	#region Getter and Setter
 
+	public bool CameraControlable{
+		set{ controlable = value;}
+	}
+
+	#endregion
 
 	#region built-in method
 	// set the origin position 
@@ -32,10 +40,14 @@ public class CameraController : MonoBehaviour
 		{
 			transform.position = originPosition;
 		}
-		MoveCamera();
-		if (Input.GetButtonDown("focusUFO")) {
-			FocusUFO();
+		if (controlable) {
+			MoveCamera();
+			if (Input.GetButtonDown("focusUFO")) {
+				FocusUFO();
+			}
 		}
+
+
 	}
 
 	#endregion

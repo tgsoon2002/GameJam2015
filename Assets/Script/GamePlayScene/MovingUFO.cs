@@ -12,13 +12,14 @@ public class MovingUFO : MonoBehaviour {
 	private float UFOSpeed = 8.0f;
 	public GameObject beamRay;
 	public GameObject forceBar;
-
+	public Transform shadowTransform;
 	public Text warningText;
 	private int health = 5;
 	private bool justGotHit = false;
 	private float beamForce = 0.0f;
 	private bool gEngineFail = false;
 	private bool UFOmoving =false;
+	[SerializeField]
 	private bool controlable = true;
 	Animator anim;
 	#endregion
@@ -47,33 +48,16 @@ public class MovingUFO : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis("Beamming") > 0.0f && !gEngineFail) {
-			beamRay.SetActive(true);
-			isBeaming = true;
-			if (forceBar.activeSelf == false) {
-				forceBar.SetActive(true);
-			}
-			if (GameManager.instance.farmer != null) {
-				GameManager.instance.GoToFrenzyMode();
-			}
+		// check if UFO can be controll, not controllable if dead of pausing
+		if (controlable && health > 0) {
+			HandleBeamming();
+			MoveUFO();	
 		}
 		else {
-			beamForce = 0.0f;
-			beamRay.SetActive(false);	
-			forceBar.SetActive(false);
-			isBeaming = false;
-			forceBar.GetComponent<BarMovement2>().ResetBeamDevice();
+			UFOBeamingOff();
 		}
 
-
-		if (isBeaming && !beamingHayStack) {
-			horizontalMove = 0;
-			verticalMove = 0;
-		}
-		else  {
-			horizontalMove = Input.GetAxis("Horizontal");
-			verticalMove = Input.GetAxis("Vertical");
-		}
+	
 
 		//if UFO moving then set to moving bool to true
 		if (horizontalMove != 0 || verticalMove != 0) {
@@ -82,23 +66,37 @@ public class MovingUFO : MonoBehaviour {
 		else {
 			UFOmoving = false;
 		}
-
-
-		if ( health > 0 && controlable) {
-			MoveUFO();	
-		}
-
 	}
 	#endregion
 
 	#region private Method
+	void HandleBeamming(){
+		if (Input.GetAxis("Beamming") > 0.0f && !gEngineFail) {
+			UFOBeamingOn();
+		}
+		else {
+			UFOBeamingOff();
+		}
+	}
+
+
 	void MoveUFO(){
+		//
+		if (isBeaming && !beamingHayStack) {
+			horizontalMove = 0;
+			verticalMove = 0;
+		}
+		else  {
+			horizontalMove = Input.GetAxis("Horizontal");
+			verticalMove = Input.GetAxis("Vertical");
+		}
 		this.GetComponent<Rigidbody>().velocity = new Vector3(horizontalMove * UFOSpeed,0,verticalMove * UFOSpeed);
 	}
 	void UFODie(){
 		gameObject.GetComponent<ParticleSystem>().Play();
 		gameObject.GetComponent<Rigidbody>().useGravity = true;
 		GameManager.instance.UFODestroyed();
+		controlable = false;
 	}
 
 	void TakeDamage(){
@@ -133,6 +131,26 @@ public class MovingUFO : MonoBehaviour {
 
 
 	#region Helper Method
+	
+	void UFOBeamingOn(){
+		beamRay.SetActive(true);
+		isBeaming = true;
+//		if (forceBar.activeSelf == false) {
+//			forceBar.SetActive(true);
+//		}
+
+		if (GameManager.instance.farmer != null) {
+			GameManager.instance.GoToFrenzyMode();
+		}
+	}
+	void UFOBeamingOff(){
+		beamForce = 0.0f;
+		beamRay.SetActive(false);	
+		//forceBar.SetActive(false);
+		isBeaming = false;
+		forceBar.GetComponent<BarMovement2>().ResetBeamDevice();
+	}
+
 	void ResetGEgnine(){
 		gEngineFail = false;
 		warningText.text = "";
@@ -152,6 +170,9 @@ public class MovingUFO : MonoBehaviour {
 		if (collision.gameObject.CompareTag ("Cow") || collision.gameObject.CompareTag ("HayStack") ) {
 			if (isBeaming) {
 				collision.GetComponent<Rigidbody>().drag = 20.0f;
+				if (Input.GetButtonDown("AddForce")) {
+					collision.GetComponent<CowAI>().BeingPull(shadowTransform.position);
+				}
 				if (beamForce > 0) {
 					collision.GetComponent<Rigidbody>().AddForce(Vector3.up * beamForce,ForceMode.Impulse);
 					beamForce = 0;
@@ -169,7 +190,7 @@ public class MovingUFO : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider bullet){
+	void OnCollisionEnter(Collision bullet){
 		if (bullet.gameObject.CompareTag("Bullet")) {
 			Destroy (bullet.gameObject);
 			TakeDamage();

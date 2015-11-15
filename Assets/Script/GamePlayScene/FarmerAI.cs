@@ -204,7 +204,9 @@ public class FarmerAI : MonoBehaviour
 
 	#region Collider Method
 	void OnCollisionEnter(Collision hayStack){
-		if (hayStack.gameObject.name == "HayStack") {
+
+		if (hayStack.gameObject.CompareTag( "HayStack") ) {
+			Debug.Log("Hit by haystack");
 			hayStack.gameObject.GetComponent<HayStackScript>().HitObeject();
 			SetStunned();
 		}

@@ -38,6 +38,7 @@ public class CinematicScript : MonoBehaviour
 		StartCoroutine(TypingText(textToScreen));
 		UFO.transform.position =new Vector3(transform.position.x,10.0f,transform.position.z - 20.0f);
 		auSou.enabled = true;
+		GameManager.instance.mainCamera.CameraControlable = false;
 	}
 	
 	// Update is called once per frame
@@ -55,6 +56,7 @@ public class CinematicScript : MonoBehaviour
 			UI.gameObject.SetActive(true);
 			timer.TimerRunning(true);
 			UFO.UFOControlling = true;
+			GameManager.instance.mainCamera.CameraControlable = true;
 			Destroy(this);
 		}
 	}
@@ -71,6 +73,10 @@ public class CinematicScript : MonoBehaviour
 
 	#region Helper Method
 	void FocusTarget(){
+
+	}
+
+	void TransferByPlayerPref(){
 
 	}
 

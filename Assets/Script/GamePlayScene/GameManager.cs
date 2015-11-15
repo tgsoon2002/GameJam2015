@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour {
 	// Active or deactive the blur effect of camera.
 	public void PauseGame(bool val){
 		blurEffect.enabled = val;
+		UFO.UFOControlling = !val;
 	}
 	#endregion
 

@@ -10,7 +10,6 @@ public class CowAI : MonoBehaviour
 	
 	Vector2 direction;
     private Animator anim;
-
     private Vector3 destination;        
     private Vector3 newPosition;
     private float moveTime;
@@ -18,10 +17,6 @@ public class CowAI : MonoBehaviour
 	private bool isMoving = false;
 	private bool nearFence = false;
 
-    #endregion
-
-    #region Setters & Getters
-    
     #endregion
 
     #region Built-in Unity Methods
@@ -44,6 +39,8 @@ public class CowAI : MonoBehaviour
 				StopMoving();
 			}
         }
+	
+
     }
 
     #endregion
@@ -64,24 +61,30 @@ public class CowAI : MonoBehaviour
 	public void TriggerMove()
 	{
 		anim.SetBool("sleeping",false);
-		if(!isSucked)
+		if(!isSucked && !isMoving)
 		{
 			MoveToNewLocation();
+			isMoving = true;
 		}
 	}
 
+	public void BeingPull(Vector3 pullPoint){
+		Vector2 groundPos = new Vector2 ( transform.position.x,transform.position.z);
+		Vector2 groundPullPoint = new Vector2 (pullPoint.x, pullPoint.z);
+		if ((groundPos-groundPullPoint).magnitude <= 0.5f) {
+			transform.position = new Vector3(pullPoint.x,4.0f,pullPoint.z);
+			Debug.Log(new Vector3(pullPoint.x,4.0f,pullPoint.z));
+		}else if ((groundPos-groundPullPoint).magnitude >= 0.05f){
+			gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pullPoint, 2f*Time.deltaTime);
+		}
+	}
     #endregion
 
     #region Private Methods
-    
-
-
-
-
-
 	void StopMoving(){
 		isMoving = false;
 		anim.SetBool ("notMoving",true );
+
 	}
 	#endregion
 

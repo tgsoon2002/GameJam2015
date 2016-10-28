@@ -115,6 +115,10 @@ public class LevelTimer : MonoBehaviour
 
     #region Public Methods
 
+	public void AddExtraTime(float val){
+		timer+= val;
+	}
+
     //
     public void TimerRunning(bool val)
     {

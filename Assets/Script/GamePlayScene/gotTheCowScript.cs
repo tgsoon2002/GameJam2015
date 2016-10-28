@@ -10,10 +10,10 @@ public class gotTheCowScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider cow){
-		if (cow.CompareTag ("Cow")) {
+		if (cow.CompareTag ("Cow") && !cow.GetComponent<CowAbduction>().CowIsAbducted) {
+			cow.GetComponent<CowAbduction>().BeingAbducted();
 			audi.Stop();
 			audi.Play();	
 		}
-	
 	}
 }

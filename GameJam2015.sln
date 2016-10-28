@@ -5,6 +5,8 @@ Project("{77544882-1D9A-33D0-7EC1-B742B8926F96}") = "GameJam2015", "Assembly-CSh
 EndProject
 Project("{77544882-1D9A-33D0-7EC1-B742B8926F96}") = "GameJam2015", "Assembly-CSharp.csproj", "{013B748D-367B-6801-4939-E43135448028}"
 EndProject
+Project("{77544882-1D9A-33D0-7EC1-B742B8926F96}") = "GameJam2015", "Assembly-UnityScript-Editor.unityproj", "{1473706B-BB3B-B36C-EB15-CC264AAD44C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{013B748D-367B-6801-4939-E43135448028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{013B748D-367B-6801-4939-E43135448028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{013B748D-367B-6801-4939-E43135448028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1473706B-BB3B-B36C-EB15-CC264AAD44C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1473706B-BB3B-B36C-EB15-CC264AAD44C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1473706B-BB3B-B36C-EB15-CC264AAD44C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1473706B-BB3B-B36C-EB15-CC264AAD44C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																																																																																																																																																																								GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																																																																																																																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -42,5 +48,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal
